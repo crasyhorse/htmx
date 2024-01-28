@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../node_modules/bulma/css//bulma.min.css" rel="stylesheet" />
+        <link href="../../node_modules/font-awesome/css/font-awesome.min.css" />
+        <script defer src="../../node_modules/htmx.org/dist/htmx.min.js"></script>
+        <title>Triggers</title>
+    </head>
+    <body>
+        <div class="columns mt-3">
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-header-title title is-4">On load</h2>
+                    </div>
+                    <div class="card-content" style="overflow: hidden">
+                        <div
+                            hx-get="https://swapi.dev/api/people?search=luke"
+                            hx-swap="innerHTML"
+                            hx-trigger="load delay:3s"
+                        ></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-header-title title is-4">On Mouseenter</h2>
+                    </div>
+                    <div class="card-content">
+                        <div
+                            style="overflow: hidden"
+                            hx-get="https://swapi.dev/api/people/?search=r2"
+                            hx-swap="innerHTML"
+                            hx-trigger="mouseenter once"
+                        >
+                            Please enter with your mouse right here!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-header-title title is-4">On click</h2>
+                    </div>
+                    <div class="card-content" style="overflow: hidden">
+                        <button
+                            type="button"
+                            hx-get="https://swapi.dev/api/people/?search=obi"
+                            hx-swap="outerHTML"
+                            hx-trigger="click[ctrlKey]"
+                        >
+                            Click here!
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
