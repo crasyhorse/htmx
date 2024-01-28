@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../node_modules/bulma/css//bulma.min.css" rel="stylesheet" />
+        <link href="../../node_modules/font-awesome/css/font-awesome.min.css" />
+        <script defer src="../../node_modules/htmx.org/dist/htmx.min.js"></script>
+        <script defer src="../../node_modules/htmx.org/dist/ext//client-side-templates.js"></script>
+        <script defer src="../../node_modules/mustache/mustache.min.js"></script>
+        <title>Star Trek API</title>
+    </head>
+    <body>
+        <div hx-ext="client-side-templates">
+            <div class="columns mt-3 is-centered">
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-header-title title is-4">Episode search</h2>
+                        </div>
+                        <div class="card-content">
+                            <form
+                                hx-post="https://stapi.co/api/v1/rest/episode/search"
+                                hx-target="#target"
+                                hx-swap="innerHTML"
+                                mustache-template="episodes"
+                            >
+                                <div class="field">
+                                    <label class="label">Name / Title</label>
+                                    <div class="control">
+                                        <input
+                                            class="input"
+                                            name="title"
+                                            type="text"
+                                            placeholder="Enter an episodes name / title"
+                                        />
+                                    </div>
+                                </div>
+                                <button class="button is-info is-light" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-header-title title is-4">Results</h2>
+                        </div>
+                        <div id="target" class="card-content" style="overflow: hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <template id="episodes">
+                {{#episodes}}
+                <ul style="list-style-type: disc">
+                    <li>Title: {{title}}</li>
+                    <li>German title: {{titleGerman}}</li>
+                    <li>Series: {{series.title}}</li>
+                    <li>Season: {{season.title}}</li>
+                    <li>Season number: {{seasonNumber}}</li>
+                    <li>Episode number: {{episodeNumber}}</li>
+                </ul>
+                <hr />
+                {{/episodes}}
+            </template>
+        </div>
+    </body>
+</html>
