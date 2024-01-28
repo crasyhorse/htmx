@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../../node_modules/bulma/css//bulma.min.css" rel="stylesheet" />
+        <link href="../../node_modules/font-awesome/css/font-awesome.min.css" />
+        <script defer src="../../node_modules/htmx.org/dist/htmx.min.js"></script>
+        <title>Client Side Templates</title>
+    </head>
+    <body>
+        <div class="columns mt-3 is-centered">
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-header-title title is-4">Character search</h2>
+                    </div>
+                    <div class="card-content">
+                        <form>
+                            <div class="field">
+                                <label class="label">Person name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Enter a character's name" />
+                                </div>
+                            </div>
+                            <button class="button is-info is-light" type="submit">OK</button>
+                        </form>
+                        <h2 class="is-size-4 mt-3">Results</h2>
+                        <div class="box mt-3" id="target" style="overflow: hidden"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-header-title title is-4">Character search - Get them all</h2>
+                    </div>
+                    <div class="card-content">
+                        <button type="button" class="button is-info is-light">Get them all!</button>
+                        <h2 class="is-size-4 mt-3">Results</h2>
+                        <div class="box mt-3" id="listTarget" style="overflow: hidden"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
